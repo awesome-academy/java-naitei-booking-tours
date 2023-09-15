@@ -1,0 +1,9 @@
+# MySQL properties
+mysql.driver=
+mysql.url=
+mysql.user=
+mysql.password=
+
+# Hibernate properties
+hibernate.show_sql=
+hibernate.format_sql=
