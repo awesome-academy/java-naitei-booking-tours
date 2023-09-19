@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "D:/OneDrive - Hanoi University of Science and Technology/Work/20231/Thuật toán ứng dụng/OpenERP_code"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"iostream": "cpp",
+			"ostream": "cpp"
+		}
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": []
+	}
+}
