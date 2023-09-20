@@ -1,0 +1,1 @@
+alert("Alert in assets/js/main.js");
