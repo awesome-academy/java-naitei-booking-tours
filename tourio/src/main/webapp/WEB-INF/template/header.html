@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Icon Font Stylesheet -->
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+            rel="stylesheet"
+        />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+            rel="stylesheet"
+        />
+
+        <!-- Libraries Stylesheet -->
+        <link th:href="@{../lib/animate/animate.min.css}" rel="stylesheet" />
+        <link
+            th:href="@{../lib/owlcarousel/assets/owl.carousel.min.css"
+            rel="stylesheet"
+        />
+        <link
+            th:href="@{../ib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
+            rel="stylesheet"
+        />
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link th:href="@{../css/bootstrap.min.css" rel="stylesheet" />
+
+        <!-- Template Stylesheet -->
+        <link th:href="@{../css/style.css" rel="stylesheet" />
+    </head>
+
+    <body>
+        <div th:fragment="header" class="container-fluid">
+            <nav
+                class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0"
+            >
+                <a href="" class="navbar-brand p-0">
+                    <h1 class="text-primary m-0">
+                        <i class="fa fa-map-marker-alt me-3"></i>Tourio
+                    </h1>
+                </a>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse"
+                >
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="#" class="nav-item nav-link active">Home</a>
+                        <a href="#" class="nav-item nav-link">About</a>
+                        <a href="#" class="nav-item nav-link">Contact</a>
+                    </div>
+                    <a href="" class="btn btn-primary rounded-pill py-2 px-4"
+                        >Register</a
+                    >
+                </div>
+            </nav>
+        </div>
+
+        <div th:fragment="headerLoggin" class="container-fluid">
+            <nav
+                class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0"
+            >
+                <a href="" class="navbar-brand p-0">
+                    <h1 class="text-primary m-0">
+                        <i class="fa fa-map-marker-alt me-3"></i>Tourio
+                    </h1>
+                </a>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse"
+                >
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="#" class="nav-item nav-link active">Home</a>
+                        <a href="#" class="nav-item nav-link">About</a>
+                        <a href="#" class="nav-item nav-link">Contact</a>
+                        <a href="#" class="nav-item nav-link">Bookings</a>
+                        <div class="nav-item dropdown">
+                            <a
+                                href="#"
+                                class="nav-link dropdown-toggle"
+                                data-bs-toggle="dropdown"
+                                >Settings</a
+                            >
+                            <div class="dropdown-menu m-0">
+                                <a href="#" class="dropdown-item">Log out</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script th:src="@{/lib/wow/wow.min.js}"></script>
+        <script th:src="@{/lib/easing/easing.min.js}"></script>
+        <script th:src="@{/lib/waypoints/waypoints.min.js}"></script>
+        <script th:src="@{/lib/owlcarousel/owl.carousel.min.js}"></script>
+        <script th:src="@{/lib/tempusdominus/js/moment.min.js}"></script>
+        <script
+            th:src="@{/lib/tempusdominus/js/moment-timezone.min.js}"
+        ></script>
+        <script
+            th:src="@{/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js}"
+        ></script>
+
+        <!-- Template Javascript -->
+        <script th:src="@{/js/main.js}"></script>
+    </body>
+</html>
