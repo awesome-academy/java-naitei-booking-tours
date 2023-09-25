@@ -5,5 +5,6 @@ mysql.user=
 mysql.password=
 
 # Hibernate properties
+hibernate.dialect=
 hibernate.show_sql=
 hibernate.format_sql=
