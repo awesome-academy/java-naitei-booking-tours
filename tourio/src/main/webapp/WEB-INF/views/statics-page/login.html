@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="views/template/layout"
+>
+    <head>
+        <script
+            th:src="@{//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js}"
+        ></script>
+        <script
+            th:src="@{//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js}"
+        ></script>
+    </head>
+
+    <body>
+        <div layout:fragment="body">
+            <div class="container">
+                <div class="card bg-light">
+                    <article class="card-body mx-auto" style="max-width: 400px">
+                        <h4 class="card-title mt-3 text-center">
+                            Create Account
+                        </h4>
+
+                        <form
+                            th:action="@{/login}"
+                            th:object="${user}"
+                            method="post"
+                        >
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                                </div>
+                                <input
+                                    th:field="*{email}"
+                                    class="form-control"
+                                    placeholder="Email address"
+                                    type="email"
+                                />
+                            </div>
+                            <span
+                                class="error"
+                                th:if="${#fields.hasErrors('email')}"
+                                th:errors="*{email}"
+                            ></span>
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-lock"></i>
+                                    </span>
+                                </div>
+                                <input
+                                    th:field="*{password}"
+                                    id="password"
+                                    class="form-control"
+                                    placeholder="Password"
+                                    type="password"
+                                />
+                            </div>
+                            <span
+                                class="error"
+                                th:if="${#fields.hasErrors('password')}"
+                                th:errors="*{password}"
+                            ></span>
+                            <input type="hidden" th:field="*{role}" />
+                            <div
+                                class="form-group d-flex justify-content-center"
+                            >
+                                <button
+                                    type="submit"
+                                    class="btn btn-primary btn-block"
+                                >
+                                    Login
+                                </button>
+                            </div>
+                            <p class="text-center">
+                                Does not have an account?
+                                <a href="./register">Register</a>
+                            </p>
+                        </form>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
