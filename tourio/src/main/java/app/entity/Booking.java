@@ -16,7 +16,7 @@ import lombok.Setter;
 @Setter
 public class Booking {
 
-    enum Status {
+    public enum Status {
         WAITING, APPROVED, DECLINED
     }
 

@@ -1,4 +1,4 @@
-package app.service.serviceImpl;
+package app.service.impl;
 
 import java.util.List;
 
@@ -11,12 +11,11 @@ import app.service.TourService;
 
 @Component
 public class TourServiceImpl implements TourService {
-	@Autowired
-	private TourDao tourDao;
-	
-	@Override
-	public List<Tour> getAllTour() {
-		return tourDao.getAllTour();
-	}
+    @Autowired
+    private TourDao tourDao;
 
+    @Override
+    public List<Tour> getAllTour() {
+        return tourDao.getAll();
+    }
 }

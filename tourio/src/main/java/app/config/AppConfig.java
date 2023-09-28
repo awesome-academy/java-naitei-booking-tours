@@ -13,16 +13,17 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.orm.hibernate5.HibernateTemplate;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
@@ -40,6 +41,8 @@ import nz.net.ultraq.thymeleaf.decorators.strategies.GroupingStrategy;
 @PropertySource("classpath:datasources.properties")
 @Configuration
 @EnableWebMvc
+@EnableTransactionManagement
+@EnableAspectJAutoProxy
 @ComponentScan(basePackages = { "app.*" })
 public class AppConfig implements WebApplicationInitializer, WebMvcConfigurer {
 
@@ -74,13 +77,6 @@ public class AppConfig implements WebApplicationInitializer, WebMvcConfigurer {
         configurer.enable();
     }
 
-    // Ensures that @PropertySource is also be executed, not overwritten by
-    // messageSource
-    @Bean
-    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-        return new PropertySourcesPlaceholderConfigurer();
-    }
-
     @Bean
     public ThymeleafViewResolver viewResolver() {
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
@@ -90,12 +86,6 @@ public class AppConfig implements WebApplicationInitializer, WebMvcConfigurer {
         return viewResolver;
     }
 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/webapp/assets/**")
-                .addResourceLocations("classpath:/webapp/assets/");
-    }
-    
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
@@ -112,7 +102,7 @@ public class AppConfig implements WebApplicationInitializer, WebMvcConfigurer {
         templateEngine.setTemplateResolver(templateResolver());
         templateEngine.addDialect(new LayoutDialect(new GroupingStrategy()));
         return templateEngine;
-       
+
     }
 
     @Bean
@@ -150,5 +140,10 @@ public class AppConfig implements WebApplicationInitializer, WebMvcConfigurer {
     @Bean
     public HibernateTemplate hibernateTemplate(SessionFactory sessionFactory) {
         return new HibernateTemplate(sessionFactory);
+    }
+
+    @Bean
+    public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
+        return new HibernateTransactionManager(sessionFactory);
     }
 }

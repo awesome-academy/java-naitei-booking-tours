@@ -21,28 +21,28 @@ public class TourDaoImpl implements TourDao {
     private HibernateTemplate template;
 
     @Override
-    public Tour getTour(Integer tourId) {
+    public Tour get(Integer tourId) {
         return template.get(Tour.class, tourId);
     }
 
     @Override
-    public List<Tour> getAllTour() {
+    public List<Tour> getAll() {
         DetachedCriteria dc = DetachedCriteria.forClass(Tour.class);
         return (List<Tour>) template.findByCriteria(dc);
     }
 
 	@Override
-	public boolean addTour(Tour tour) {
+	public boolean add(Tour tour) {
 		return template.save(tour) != null;
 	}
 
 	@Override
-	public boolean updateTour(Tour tour) {
+	public boolean update(Tour tour) {
 		return template.save(tour) != null;
 	}
 
 	@Override
-	public void deleteTour(Long tourId) {
+	public void delete(Integer tourId) {
 		Tour tour = (Tour) template.load("Tour", tourId, LockMode.PESSIMISTIC_WRITE);
 		template.delete(tour);
 	}

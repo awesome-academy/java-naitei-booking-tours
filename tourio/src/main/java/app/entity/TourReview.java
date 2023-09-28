@@ -20,8 +20,8 @@ import lombok.Setter;
 @Setter
 public class TourReview {
 
-    enum Status {
-        WAITING, APPROVED, DECLINED
+    public enum Status {
+        APPROVED, WAITING, DECLINED
     }
 
     @Id

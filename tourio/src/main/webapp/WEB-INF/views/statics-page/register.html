@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="views/template/layout"
+>
+    <head>
+        <script
+            th:src="@{//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js}"
+        ></script>
+        <script
+            th:src="@{//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js}"
+        ></script>
+        <script th:src="@{./assets/js/form.js}"></script>
+    </head>
+
+    <body>
+        <div layout:fragment="body">
+            <div class="container">
+                <div class="card bg-light">
+                    <article class="card-body mx-auto" style="max-width: 400px">
+                        <h4 class="card-title mt-3 text-center">
+                            Create Account
+                        </h4>
+
+                        <form
+                            th:action="@{/register}"
+                            th:object="${user}"
+                            method="post"
+                            onsubmit="return validateRepeatPassword();"
+                        >
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                </div>
+                                <input
+                                    th:field="*{fullname}"
+                                    class="form-control"
+                                    placeholder="Full name"
+                                    type="text"
+                                />
+                            </div>
+                            <span
+                                class="error"
+                                th:if="${#fields.hasErrors('fullname')}"
+                                th:errors="*{fullname}"
+                            ></span>
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-building"></i>
+                                    </span>
+                                </div>
+                                <select
+                                    th:field="*{gender}"
+                                    class="form-control"
+                                >
+                                    <option
+                                        value="MALE"
+                                        th:text="Male"
+                                    ></option>
+                                    <option
+                                        value="FEMALE"
+                                        th:text="Female"
+                                    ></option>
+                                </select>
+                            </div>
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                                </div>
+                                <input
+                                    th:field="*{email}"
+                                    class="form-control"
+                                    placeholder="Email address"
+                                    type="email"
+                                />
+                            </div>
+                            <span
+                                class="error"
+                                th:if="${#fields.hasErrors('email')}"
+                                th:errors="*{email}"
+                            ></span>
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-lock"></i>
+                                    </span>
+                                </div>
+                                <input
+                                    th:field="*{password}"
+                                    id="password"
+                                    class="form-control"
+                                    placeholder="Password"
+                                    type="password"
+                                />
+                            </div>
+                            <span
+                                class="error"
+                                th:if="${#fields.hasErrors('password')}"
+                                th:errors="*{password}"
+                            ></span>
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-lock"></i>
+                                    </span>
+                                </div>
+                                <input
+                                    id="repeatPassword"
+                                    class="form-control"
+                                    placeholder="Repeat password"
+                                    type="password"
+                                />
+                            </div>
+                            <input type="hidden" th:field="*{role}" />
+                            <div
+                                class="form-group d-flex justify-content-center"
+                            >
+                                <button
+                                    type="submit"
+                                    class="btn btn-primary btn-block"
+                                >
+                                    Create Account
+                                </button>
+                            </div>
+                            <p class="text-center">
+                                Have an account? <a href="./login">Log In</a>
+                            </p>
+                        </form>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

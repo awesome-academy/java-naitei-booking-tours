@@ -20,7 +20,7 @@ import lombok.Setter;
 @Setter
 public class TourAvailable {
 
-    enum Available {
+    public enum Available {
         YES, NO
     }
 

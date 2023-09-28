@@ -15,15 +15,15 @@ import app.service.TourService;
 
 @Controller
 public class HomeController {
-	@Autowired
-	private TourService tourService;
-	
-	@GetMapping(value = "/")
-	public String index(@RequestParam(name = "page", required = false) Optional<Integer> page, Locale locale,Model model) {
-		List<Tour> tours = tourService.getAllTour();
-		model.addAttribute("tours", tours);
-		return "views/statics-page/home";
-	}
-	
 
+    @Autowired
+    private TourService tourService;
+
+    @GetMapping(value = "/")
+    public String index(@RequestParam(name = "page", required = false) Optional<Integer> page, Locale locale,
+            Model model) {
+        List<Tour> tours = tourService.getAllTour();
+        model.addAttribute("tours", tours);
+        return "views/statics-page/home";
+    }
 }
