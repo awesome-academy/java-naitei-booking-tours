@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.LockMode;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Component;
@@ -17,19 +18,19 @@ import app.entity.Tour;
 @Component
 public class TourDaoImpl implements TourDao {
 
-    @Autowired
-    private HibernateTemplate template;
+	@Autowired
+	private HibernateTemplate template;
 
-    @Override
-    public Tour get(Integer tourId) {
-        return template.get(Tour.class, tourId);
-    }
+	@Override
+	public Tour get(Integer tourId) {
+		return template.get(Tour.class, tourId);
+	}
 
-    @Override
-    public List<Tour> getAll() {
-        DetachedCriteria dc = DetachedCriteria.forClass(Tour.class);
-        return (List<Tour>) template.findByCriteria(dc);
-    }
+	@Override
+	public List<Tour> getAll() {
+		DetachedCriteria dc = DetachedCriteria.forClass(Tour.class);
+		return (List<Tour>) template.findByCriteria(dc);
+	}
 
 	@Override
 	public boolean add(Tour tour) {
