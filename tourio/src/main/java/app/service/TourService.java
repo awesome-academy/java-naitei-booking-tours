@@ -6,4 +6,6 @@ import app.entity.Tour;
 
 public interface TourService {
 	List<Tour> getAllTour();
+	
+	Tour getTourById(Integer id);
 }

@@ -18,4 +18,11 @@ public class TourServiceImpl implements TourService {
     public List<Tour> getAllTour() {
         return tourDao.getAll();
     }
+
+	@Override
+	public Tour getTourById(Integer id) {
+		return tourDao.get(id);
+	}
+    
+    
 }

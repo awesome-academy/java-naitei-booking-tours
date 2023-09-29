@@ -7,19 +7,19 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(rollbackFor = Exception.class, readOnly = true)
 public interface BaseDao<T> {
 
-    // CRUD operations
+	// CRUD operations
 
-    @Transactional(readOnly = false)
+	@Transactional(readOnly = false)
 	boolean add(T t);
 
-    @Transactional(readOnly = false)
-    boolean update(T t);
+	@Transactional(readOnly = false)
+	boolean update(T t);
 
-    T get(Integer id);
+	T get(Integer id);
 
-    @Transactional(readOnly = false)
-    void delete(Integer id);
+	@Transactional(readOnly = false)
+	void delete(Integer id);
 
-    // Queries
-    List<T> getAll();
+	// Queries
+	List<T> getAll();
 }

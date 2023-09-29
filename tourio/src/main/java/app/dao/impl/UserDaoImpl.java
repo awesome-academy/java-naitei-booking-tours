@@ -15,42 +15,42 @@ import app.entity.User;
 @SuppressWarnings("unchecked")
 public class UserDaoImpl implements UserDao {
 
-    @Autowired
-    private HibernateTemplate template;
+	@Autowired
+	private HibernateTemplate template;
 
-    @Override
-    public boolean add(User user) {
-        return template.save(user) != null;
-    }
+	@Override
+	public boolean add(User user) {
+		return template.save(user) != null;
+	}
 
-    @Override
-    public boolean update(User user) {
-        return template.save(user) != null;
-    }
+	@Override
+	public boolean update(User user) {
+		return template.save(user) != null;
+	}
 
-    @Override
-    public User get(Integer userId) {
-        return template.get(User.class, userId);
-    }
+	@Override
+	public User get(Integer userId) {
+		return template.get(User.class, userId);
+	}
 
-    @Override
-    public User get(String email) {
-        DetachedCriteria dc = DetachedCriteria.forClass(User.class);
-        dc.add(Restrictions.eq("email", email));
-        List<User> users = (List<User>) template.findByCriteria(dc);
-        return users.isEmpty() ? null : users.get(0);
-    }
+	@Override
+	public User get(String email) {
+		DetachedCriteria dc = DetachedCriteria.forClass(User.class);
+		dc.add(Restrictions.eq("email", email));
+		List<User> users = (List<User>) template.findByCriteria(dc);
+		return users.isEmpty() ? null : users.get(0);
+	}
 
-    @Override
-    public void delete(Integer userId) {
-        User user = (User) template.load("User", userId, LockMode.PESSIMISTIC_WRITE);
-        template.delete(user);
-    }
+	@Override
+	public void delete(Integer userId) {
+		User user = (User) template.load("User", userId, LockMode.PESSIMISTIC_WRITE);
+		template.delete(user);
+	}
 
-    @Override
-    public List<User> getAll() {
-        DetachedCriteria dc = DetachedCriteria.forClass(User.class);
-        return (List<User>) template.findByCriteria(dc);
-    }
+	@Override
+	public List<User> getAll() {
+		DetachedCriteria dc = DetachedCriteria.forClass(User.class);
+		return (List<User>) template.findByCriteria(dc);
+	}
 
 }
