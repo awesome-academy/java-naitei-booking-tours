@@ -32,7 +32,10 @@
 
 <body>
 	
-	<div th:replace="views/template/header :: header"></div>
+	<div>
+		<div th:if="${#session.getAttribute('user') == null}" th:insert="views/template/header :: header"></div>
+		<div th:unless="${#session.getAttribute('user') == null}" th:insert="views/template/header :: headerLogin"></div>
+	</div>
 	<div class="container">
     	<div layout:fragment="body"></div>
 	</div>
