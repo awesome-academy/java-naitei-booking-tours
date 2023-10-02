@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,9 +23,13 @@ public class HomeController {
 
     @GetMapping(value = "/")
     public String index(@RequestParam(name = "page", required = false) Optional<Integer> page, Locale locale,
-            Model model) {
+            Model model, HttpSession session) {
         List<Tour> tours = tourService.getAllTour();
         model.addAttribute("tours", tours);
-        return "views/statics-page/home";
+        if (session.getAttribute("user") != null) {
+            return "views/statics-page/home-logined";
+        } else {
+            return "views/statics-page/home";
+        }
     }
 }

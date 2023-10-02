@@ -4,7 +4,7 @@ import app.entity.User;
 
 public interface UserService {
 
-    boolean verifyUser(String email, String password);
+    User getUser(String email, String password);
 
     void registerUser(User user);
 }
