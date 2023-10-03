@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="views/template/layout"
+>
+    <head>
+        <script
+            th:src="@{//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js}"
+        ></script>
+        <script
+            th:src="@{//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js}"
+        ></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    </head>
+
+    <body>
+        <div layout:fragment="body">
+            <div class="container">
+                    <table class="table table-striped custab" align="center" style="margin: 0 auto;">
+                        <thead>
+                            <tr>
+                                <th>Tour name</th>
+                                <th>Start date</th>
+                                <th>Quantity</th>
+                                <th>Contact name</th>
+                                <th>Contact phone</th>
+                                <th>Contact email</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="booking : ${bookings}">
+                                <td th:text="${booking.tourAvailable.tour.name}"></td>
+                                <td th:text="${booking.tourAvailable.start}"></td>
+                                <td th:text="${booking.quantity}"></td>
+                                <td th:text="${booking.contactName}"></td>
+                                <td th:text="${booking.contactPhone}"></td>
+                                <td th:text="${booking.contactEmail}"></td>
+                                <td th:text="${booking.status}"></td>
+                                <td>
+                                    <form method="post" th:action="@{/bookings/{id}/approve(id=${booking.id})}">
+                                        <input type="hidden" name="bookingId" th:value="${booking.id}"/>
+                                        <button type="submit" class="btn btn-info btn-xs">
+                                            <span class="glyphicon glyphicon-edit"></span> Approve
+                                        </button>
+                                    </form>
+                                    <form method="post" th:action="@{/bookings/{id}/decline(id=${booking.id})}">
+                                        <input type="hidden" name="bookingId" th:value="${booking.id}"/>
+                                        <button type="submit" class="btn btn-danger btn-xs">
+                                            <span class="glyphicon glyphicon-remove"></span> Decline
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+    </body>
+</html>

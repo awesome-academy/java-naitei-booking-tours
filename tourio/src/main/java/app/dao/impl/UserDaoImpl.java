@@ -7,12 +7,14 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import app.dao.UserDao;
 import app.entity.User;
 
 @Repository("userDaoImpl")
 @SuppressWarnings("unchecked")
+@Component
 public class UserDaoImpl implements UserDao {
 
 	@Autowired
@@ -25,7 +27,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public boolean update(User user) {
-		return template.save(user) != null;
+		return template.merge(user) != null;
 	}
 
 	@Override

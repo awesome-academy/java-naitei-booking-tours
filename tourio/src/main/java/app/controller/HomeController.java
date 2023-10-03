@@ -26,10 +26,6 @@ public class HomeController {
             Model model, HttpSession session) {
         List<Tour> tours = tourService.getAllTour();
         model.addAttribute("tours", tours);
-        if (session.getAttribute("user") != null) {
-            return "views/statics-page/home-logined";
-        } else {
-            return "views/statics-page/home";
-        }
+        return "views/statics-page/home";
     }
 }
