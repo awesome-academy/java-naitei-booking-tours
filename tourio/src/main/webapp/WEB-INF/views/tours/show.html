@@ -3,34 +3,32 @@
 
 <body>
     <div layout:fragment="body">
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="row">
-                    <!-- Tour Details -->
-                    <div class="col-md-8">
-                        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-							<!-- Display Tour Image -->
-                            <img th:src="@{'/assets/img/tour-' + ${tour.id} + '.jpg'}" class="img-fluid" alt=""/>
-                            <!-- Display Tour Details -->
-                            <h1 th:text="${tour.place}"></h1>
-                            <p th:text="${tour.duration}"></p>
-                            <p th:text="'$' + ${tour.price}"></p>
-                            <div class="mb-3">
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                            </div>
-                            <p th:text="${tour.description}"></p>
+        <div class="container py-5">
+            <div class="row">
+                <!-- Tour Image -->
+                <div class="col-md-6">
+                    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                        <img th:src="@{'/assets/img/tour-' + ${tour.id} + '.jpg'}" class="img-fluid" alt="Tour Image" />
+                    </div>
+                </div>
+                <!-- Tour Details -->
+                <div class="col-md-6">
+                    <div class="text-left wow fadeInUp" data-wow-delay="0.2s">
+                        <h1 th:text="${tour.place}"></h1>
+                        <p class="text-muted" th:text="${tour.duration}"></p>
+                        <p class="text-success" th:text="'Price: $' + ${tour.price}"></p>
+                        <div class="mb-3">
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
                         </div>
+                        <p th:text="${tour.description}"></p>
                     </div>
                     <!-- Booking Section -->
-                    <div class="col-md-4">
-                        <div class="text-center">
-                            <!-- Add booking options here if needed -->
-                            <a href="#" class="btn btn-sm btn-primary px-3">Book Now</a>
-                        </div>
+                    <div class="text-center mt-4">
+                        <a href="#" class="btn btn-lg btn-primary px-4">Book Now</a>
                     </div>
                 </div>
             </div>

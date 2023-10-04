@@ -32,11 +32,26 @@
 
 <body>
 	
-	<div>
+	<!-- <div>
+		<div th:if="${#session.getAttribute('admin') != null}" th:insert="views/template/header :: headerLoginAdmin"></div>
+		<div th:if="${#session.getAttribute('admin') == null}" th:insert="views/template/header :: header"></div>
+		<div th:if="${#session.getAttribute('user') != null}" th:insert="views/template/header :: headerLoginUser"></div>
 		<div th:if="${#session.getAttribute('user') == null}" th:insert="views/template/header :: header"></div>
-		<div th:unless="${#session.getAttribute('user') == null}" th:insert="views/template/header :: headerLogin"></div>
 	</div>
-	<div class="container">
+ -->
+ 	<div>
+    	<div th:if="${#session.getAttribute('admin') != null}">
+        	<div th:insert="views/template/header :: headerLoginAdmin"></div>
+    	</div>
+	    <div th:if="${#session.getAttribute('user') != null}">
+	        <div th:insert="views/template/header :: headerLoginUser"></div>
+	    </div>
+	    <div th:if="${#session.getAttribute('admin') == null and #session.getAttribute('user') == null}">
+	        <div th:insert="views/template/header :: header"></div>
+	    </div>
+	</div>
+ 		
+ 	<div class="container">
     	<div layout:fragment="body"></div>
 	</div>
 	 <footer>

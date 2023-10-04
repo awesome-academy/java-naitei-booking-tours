@@ -19,12 +19,14 @@ public class UserController {
 
     @GetMapping("/bookings")
     public String booking(Model model, HttpSession session) {
-        User currentUser = (User) session.getAttribute("user");
-        if (currentUser.getRole() == Role.ADMIN) {
-            model.addAttribute("bookings", bookingService.getAllBooking());
-            return "views/bookings/admin_manage";
-        } else {
-            return "views/bookings/user_manage";
-        }
+        model.addAttribute("bookings", bookingService.getAllBooking());
+        model.addAttribute("session", session);
+        return "views/bookings/admin_manage";
+    }
+    
+    @GetMapping("/orders")
+    public String order(Model model, HttpSession session) {
+    	// Xử lý logic ở đây
+    	return "views/bookings/user_manage";
     }
 }
