@@ -28,4 +28,12 @@ public class HomeController {
         model.addAttribute("tours", tours);
         return "views/statics-page/home";
     }
+    @GetMapping("/about")
+    public String about(Model model, HttpSession session) {
+    	return "views/statics-page/about";
+    }
+    @GetMapping("/contact")
+    public String contact(Model model, HttpSession session) {
+    	return "views/statics-page/contact";
+    }
 }

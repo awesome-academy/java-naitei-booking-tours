@@ -32,7 +32,8 @@ public class LoginController {
             model.addAttribute("error", "Email or password is incorrect.");
             return "views/statics-page/login";
         }
-        session.setAttribute("user", user);
+        if (user.getRole() == User.Role.USER) session.setAttribute("user", user);
+        else if (user.getRole() == User.Role.ADMIN) session.setAttribute("admin", user);
         return "redirect:/";
     }
 
